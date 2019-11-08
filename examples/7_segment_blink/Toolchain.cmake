@@ -32,7 +32,7 @@ SET(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES "${AZURE_SPHERE_API_SET_DIR}/usr/incl
 ADD_DEFINITIONS(-D_POSIX_C_SOURCE)
 SET(COMPILE_DEBUG_FLAGS $<$<CONFIG:Debug>:-ggdb> $<$<CONFIG:Debug>:-O0>)
 SET(COMPILE_RELEASE_FLAGS $<$<CONFIG:Release>:-g1> $<$<CONFIG:Release>:-Os>)
-ADD_COMPILE_OPTIONS($<$<COMPILE_LANGUAGE:CXX>:-std=c++11> $<$<COMPILE_LANGUAGE:C>:-std=c11>
+ADD_COMPILE_OPTIONS($<$<COMPILE_LANGUAGE:CXX>:-std=c++17> $<$<COMPILE_LANGUAGE:C>:-std=c11>
                      ${COMPILE_DEBUG_FLAGS} ${COMPILE_RELEASE_FLAGS} -fPIC
                     -ffunction-sections -fdata-sections -fno-strict-aliasing
                     -fno-omit-frame-pointer -fno-exceptions -Wall $<$<COMPILE_LANGUAGE:C>:-Wstrict-prototypes>
