@@ -1,5 +1,5 @@
 # azure-sphere-adafruit-led-backpack
-A port of the Arduino library for the [Adafruit LED Backpack](https://github.com/adafruit/Adafruit_LED_Backpack) to Azure Sphere that uses C++.  Note: Microsoft DOES NOT SUPPORT C++ on the Azure Sphere. Proceed at your own risk! 
+A port of the Arduino library for the [Adafruit LED Backpack](https://github.com/adafruit/Adafruit_LED_Backpack) to Azure Sphere that uses C++.  Note: Microsoft DOES NOT support C++ develpment on the Azure Sphere. Proceed at your own risk! 
 
 This port of the Adafruit LED Backpack library is tested and works with the [SEEED Azure Sphere MT3620 Develpoment Kit](https://www.seeedstudio.com/Azure-Sphere-MT3620-Development-Kit-US-Version.html) and the [SEED MT3620 Mini Dev Board](https://www.seeedstudio.com/MT3620-Mini-Dev-Board-p-2919.html)
 
