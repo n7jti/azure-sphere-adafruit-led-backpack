@@ -1,0 +1,11 @@
+{
+    "SchemaVersion": 1,
+    "Name": "7_segment_blink",
+    "ComponentId": "4886ce44-d136-4cb3-ab10-df998e313914",
+    "EntryPoint": "/bin/app",
+    "CmdArgs": [],
+    "Capabilities": {
+        "I2cMaster": [ "ISU0" ]
+      },
+    "ApplicationType": "Default"
+  }

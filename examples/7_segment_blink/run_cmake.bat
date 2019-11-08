@@ -2,7 +2,8 @@
 mkdir build
 cd build
 
-cmake.exe -G "Ninja" ^
+cmake ^
+-G "Ninja" ^
 -DCMAKE_INSTALL_PREFIX:PATH="." ^
 -DCMAKE_TOOLCHAIN_FILE="Toolchain.cmake" ^
 -DAZURE_SPHERE_TARGET_API_SET="3" ^

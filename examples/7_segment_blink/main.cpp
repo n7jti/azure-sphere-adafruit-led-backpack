@@ -19,25 +19,25 @@ int main(void)
 {
     Log_Debug("Starting 7-Segment Blink application...\n");
 	
-    Adafruit_7segment sevseg; 
+    Adafruit_7segment sevseg(0); 
 
     const struct timespec sleepTime = {1, 0};
-	init_Adafruit_7segment(&sevseg, 0, 0x70);
-	open_Adafruit_7segment(&sevseg); 
+	sevseg.begin(0x70);
 
     while (true) {
 		//print_long_Adafruit_7segment(&sevseg, 8888, 10);
-		writeDigitNum_Adafruit_7segment(&sevseg, 0, 8, true);
-		writeDigitNum_Adafruit_7segment(&sevseg, 1, 8, true);
-		drawColon_Adafruit_7segment(&sevseg, true);
-		writeDigitNum_Adafruit_7segment(&sevseg, 3, 8, true);
-		writeDigitNum_Adafruit_7segment(&sevseg, 4, 8, true);
-		
-		writeDisplay_Adafruit_LEDBackpack(&sevseg.backpack);
+		sevseg.writeDigitNum(0, 8, true);
+		sevseg.writeDigitNum(1, 8, true);
+		sevseg.drawColon(true);
+		sevseg.writeDigitNum(3, 8, true);
+		sevseg.writeDigitNum(4, 8, true);
+		sevseg.writeDisplay(); 
+
 		nanosleep(&sleepTime, NULL);
 
-		clear_Adafruit_LEDBackpack(&sevseg.backpack);
-		writeDisplay_Adafruit_LEDBackpack(&sevseg.backpack);
+		sevseg.clear();
+		sevseg.writeDisplay(); 
+		
 		nanosleep(&sleepTime, NULL);
     }
 

@@ -2,7 +2,7 @@
 #  Licensed under the MIT License.
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.11)
-PROJECT(7_Segment_Blink C)
+PROJECT(7_Segment_Blink)
 
 # Create executable
 ADD_EXECUTABLE(

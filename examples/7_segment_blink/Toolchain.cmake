@@ -21,18 +21,23 @@ SET(CMAKE_CXX_COMPILER "${AZURE_SPHERE_API_SET_DIR}/tools/gcc/arm-poky-linux-mus
 
 SET(CMAKE_C_FLAGS_INIT "-B \"${AZURE_SPHERE_API_SET_DIR}/tools/gcc\" -march=armv7ve -mthumb -mfpu=neon -mfloat-abi=hard \
 -mcpu=cortex-a7 --sysroot=\"${AZURE_SPHERE_API_SET_DIR}\"")
+SET(CMAKE_CXX_FLAGS_INIT "-B \"${AZURE_SPHERE_API_SET_DIR}/tools/gcc\" -march=armv7ve -mthumb -mfpu=neon -mfloat-abi=hard \
+-mcpu=cortex-a7 --sysroot=\"${AZURE_SPHERE_API_SET_DIR}\"")
+
 SET(CMAKE_EXE_LINKER_FLAGS_INIT "-nodefaultlibs -pie -Wl,--no-undefined -Wl,--gc-sections")
 
 SET(CMAKE_C_STANDARD_INCLUDE_DIRECTORIES "${AZURE_SPHERE_API_SET_DIR}/usr/include")
+SET(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES "${AZURE_SPHERE_API_SET_DIR}/usr/include")
 
 ADD_DEFINITIONS(-D_POSIX_C_SOURCE)
 SET(COMPILE_DEBUG_FLAGS $<$<CONFIG:Debug>:-ggdb> $<$<CONFIG:Debug>:-O0>)
 SET(COMPILE_RELEASE_FLAGS $<$<CONFIG:Release>:-g1> $<$<CONFIG:Release>:-Os>)
-ADD_COMPILE_OPTIONS(-std=c11 ${COMPILE_DEBUG_FLAGS} ${COMPILE_RELEASE_FLAGS} -fPIC
+ADD_COMPILE_OPTIONS($<$<COMPILE_LANGUAGE:CXX>:-std=c++11> $<$<COMPILE_LANGUAGE:C>:-std=c11>
+                     ${COMPILE_DEBUG_FLAGS} ${COMPILE_RELEASE_FLAGS} -fPIC
                     -ffunction-sections -fdata-sections -fno-strict-aliasing
-                    -fno-omit-frame-pointer -fno-exceptions -Wall -Wstrict-prototypes
+                    -fno-omit-frame-pointer -fno-exceptions -Wall $<$<COMPILE_LANGUAGE:C>:-Wstrict-prototypes>
                     -Wswitch -Wempty-body -Wconversion -Wreturn-type -Wparentheses
-                    -Wno-pointer-sign -Wno-format -Wuninitialized -Wunreachable-code
+                    $<$<COMPILE_LANGUAGE:C>:-Wno-pointer-sign> -Wno-format -Wuninitialized -Wunreachable-code
                     -Wunused-function -Wunused-value -Wunused-variable
                     -Werror=implicit-function-declaration -fstack-protector-strong)
 
