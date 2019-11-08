@@ -12,10 +12,6 @@ ADD_EXECUTABLE(
 	../../Adafruit_LEDBackpack.h
 )
 
-#set_target_properties(7_Segment_Blink PROPERTIES CXX_STANDARD 17)
-set_target_properties(7_Segment_Blink PROPERTIES LINKER_LANGUAGE C)
-
-
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} applibs pthread gcc_s c)
 
 # Add MakeImage post-build command
