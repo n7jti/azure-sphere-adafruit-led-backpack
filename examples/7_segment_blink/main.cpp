@@ -15,6 +15,8 @@
 
 #include "../../Adafruit_LEDBackpack.h"
 
+using adafruit::ledbackpack::Adafruit_7segment;
+
 int main(void)
 {
     Log_Debug("Starting 7-Segment Blink application...\n");

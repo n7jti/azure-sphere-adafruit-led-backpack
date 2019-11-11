@@ -23,6 +23,10 @@
 #include <applibs/log.h>
 #include <errno.h>
 
+namespace adafruit {
+namespace ledbackpack {
+
+
 #ifndef _BV
 #define _BV(bit) (1<<(bit))
 #endif
@@ -319,3 +323,6 @@ void Adafruit_7segment::printError(void) {
 		writeDigitRaw(i, (i == 2 ? 0x00 : 0x40));
 	}
 }
+
+} // namespace ledbackpack
+} // namespace adafruit
