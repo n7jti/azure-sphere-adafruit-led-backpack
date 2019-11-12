@@ -35,12 +35,12 @@ int main(void)
 		sevseg.writeDigitNum(4, 8, true);
 		sevseg.writeDisplay(); 
 
-		nanosleep(&sleepTime, NULL);
+		nanosleep(&sleepTime, nullptr);
 
 		sevseg.clear();
 		sevseg.writeDisplay(); 
 		
-		nanosleep(&sleepTime, NULL);
+		nanosleep(&sleepTime, nullptr);
     }
 
     return 0;
