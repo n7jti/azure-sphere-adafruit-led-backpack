@@ -21,6 +21,8 @@
  ****************************************************/
 #pragma once
 #include <applibs/i2c.h>
+#include "base.h"
+#include "Print.h"
 
 namespace adafruit {
 namespace ledbackpack {
@@ -43,11 +45,6 @@ constexpr uint8_t HT16K33_BLINK_HALFHZ = 3;
 constexpr uint8_t HT16K33_CMD_BRIGHTNESS = 0xE0;
 constexpr uint8_t SEVENSEG_DIGITS = 5;
 
-
-// base
-constexpr int  BYTE = 2;
-constexpr int  DEC = 10;
-
  // this is the raw HT16K33 controller
 class Adafruit_LEDBackpack {
 public:
@@ -67,34 +64,19 @@ protected:
 	uint8_t i2c_addr;
 };
 
-class Adafruit_7segment : public Adafruit_LEDBackpack {
+class Adafruit_7segment : public Adafruit_LEDBackpack , public Print {
 public:
 	Adafruit_7segment(I2C_InterfaceId interface);
 	size_t write(uint8_t c);
-
-	void print(char, int = BYTE);
-	void print(unsigned char, int = BYTE);
-	void print(int, int = DEC);
-	void print(unsigned int, int = DEC);
-	void print(long, int = DEC);
-	void print(unsigned long, int = DEC);
-	void print(double, int = 2);
-	void println(char, int = BYTE);
-	void println(unsigned char, int = BYTE);
-	void println(int, int = DEC);
-	void println(unsigned int, int = DEC);
-	void println(long, int = DEC);
-	void println(unsigned long, int = DEC);
-	void println(double, int = 2);
 	void println(void);
 
 	void writeDigitRaw(uint8_t x, uint8_t bitmask);
 	void writeDigitNum(uint8_t x, uint8_t num, bool dot = false);
 	void drawColon(bool state);
-	void printNumber(long, uint8_t = 2);
-	void printFloat(double, uint8_t = 2, uint8_t = DEC);
+	size_t printNumber(long, uint8_t = 2);
+	size_t printFloat(double, uint8_t = 2, uint8_t = DEC);
 	void printError(void);
-
+	size_t print(long n, uint8_t base = DEC);
 	void writeColon(void);
 
 private:

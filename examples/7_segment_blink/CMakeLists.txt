@@ -12,6 +12,8 @@ ADD_EXECUTABLE(
 	../../Adafruit_LEDBackpack.h
 	../../Adafruit_GFX.cpp
 	../../Adafruit_GFX.h
+	../../Print.cpp
+	../../Print.h
 )
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} applibs pthread gcc_s c)

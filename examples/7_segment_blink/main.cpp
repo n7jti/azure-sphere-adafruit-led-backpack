@@ -15,6 +15,8 @@
 
 #include "../../Adafruit_LEDBackpack.h"
 
+extern "C" void __cxa_pure_virtual() { while (1); }
+
 using adafruit::ledbackpack::Adafruit_7segment;
 
 int main(void)
@@ -39,7 +41,17 @@ int main(void)
 
 		sevseg.clear();
 		sevseg.writeDisplay(); 
+
+		nanosleep(&sleepTime, nullptr);
+
+		sevseg.print(1234);
+		sevseg.writeDisplay();
 		
+		nanosleep(&sleepTime, nullptr);
+
+		sevseg.clear();
+		sevseg.writeDisplay();
+
 		nanosleep(&sleepTime, nullptr);
     }
 

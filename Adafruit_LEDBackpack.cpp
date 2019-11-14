@@ -125,83 +125,9 @@ Adafruit_7segment::Adafruit_7segment(I2C_InterfaceId interface) : Adafruit_LEDBa
 	position = 0;
 }
 
-void Adafruit_7segment::print(unsigned long n, int base)
-{
-	if (base == 0) write(static_cast<uint8_t>(n));
-	else printNumber(n, static_cast<uint8_t>(base));
-}
-
-void Adafruit_7segment::print(char c, int base)
-{
-	print((long)c, base);
-}
-
-void Adafruit_7segment::print(unsigned char b, int base)
-{
-	print((unsigned long)b, base);
-}
-
-void Adafruit_7segment::print(int n, int base)
-{
-	print((long)n, base);
-}
-
-void Adafruit_7segment::print(unsigned int n, int base)
-{
-	print((unsigned long)n, base);
-}
-
 void  Adafruit_7segment::println(void) {
 	position = 0;
 }
-
-void  Adafruit_7segment::println(char c, int base)
-{
-	print(c, base);
-	println();
-}
-
-void  Adafruit_7segment::println(unsigned char b, int base)
-{
-	print(b, base);
-	println();
-}
-
-void  Adafruit_7segment::println(int n, int base)
-{
-	print(n, base);
-	println();
-}
-
-void  Adafruit_7segment::println(unsigned int n, int base)
-{
-	print(n, base);
-	println();
-}
-
-void  Adafruit_7segment::println(long n, int base)
-{
-	print(n, base);
-	println();
-}
-
-void  Adafruit_7segment::println(unsigned long n, int base)
-{
-	print(n, base);
-	println();
-}
-
-void  Adafruit_7segment::println(double n, int digits)
-{
-	print(n, digits);
-	println();
-}
-
-void  Adafruit_7segment::print(double n, int digits)
-{
-	printFloat(n, static_cast<uint8_t>(digits));
-}
-
 
 size_t Adafruit_7segment::write(uint8_t c) {
 
@@ -246,17 +172,18 @@ void Adafruit_7segment::writeDigitNum(uint8_t d, uint8_t num, bool dot) {
 	writeDigitRaw(d, static_cast<uint8_t>(numbertable[num] | (dot << 7)));
 }
 
-void Adafruit_7segment::print(long n, int base)
+size_t Adafruit_7segment::print(long n, uint8_t base)
 {
-	printNumber(n, static_cast<uint8_t>(base));
+	return printNumber(n, static_cast<uint8_t>(base));
 }
 
-void Adafruit_7segment::printNumber(long n, uint8_t base)
+size_t Adafruit_7segment::printNumber(long n, uint8_t base)
 {
 	printFloat(n, 0, base);
+	return 4; 
 }
 
-void Adafruit_7segment::printFloat(double n, uint8_t fracDigits, uint8_t base)
+size_t Adafruit_7segment::printFloat(double n, uint8_t fracDigits, uint8_t base)
 {
 	uint8_t numericDigits = 4;   // available digits on display
 	bool isNegative = false;  // true if the number is negative
@@ -316,6 +243,8 @@ void Adafruit_7segment::printFloat(double n, uint8_t fracDigits, uint8_t base)
 		// clear remaining display positions
 		while (displayPos >= 0) writeDigitRaw(displayPos--, 0x00);
 	}
+
+	return 4; 
 }
 
 void Adafruit_7segment::printError(void) {

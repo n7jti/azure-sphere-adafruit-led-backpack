@@ -13,10 +13,11 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include "Print.h"
 #include "gfxfont.h"
 
 /// A generic graphics superclass that can handle all sorts of drawing. At a minimum you can subclass and provide drawPixel(). At a maximum you can do a ton of overriding to optimize. Used for any/all Adafruit displays!
-class Adafruit_GFX /* : public Print */{
+class Adafruit_GFX : public adafruit::ledbackpack::Print {
 
  public:
 
@@ -165,11 +166,7 @@ class Adafruit_GFX /* : public Print */{
   /**********************************************************************/
   void cp437(bool x=true) { _cp437 = x; }
 
-#if ARDUINO >= 100
   virtual size_t write(uint8_t);
-#else
-  virtual void   write(uint8_t);
-#endif
 
   /************************************************************************/
   /*!
