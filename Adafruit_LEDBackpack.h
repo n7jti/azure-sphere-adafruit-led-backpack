@@ -112,8 +112,6 @@ class Adafruit_8x8matrix : public Adafruit_LEDBackpack, public Adafruit_GFX {
  private:
 };
 
-
-
 class Adafruit_BicolorMatrix : public Adafruit_LEDBackpack, public Adafruit_GFX {
 public:
 	Adafruit_BicolorMatrix(I2C_InterfaceId interface);

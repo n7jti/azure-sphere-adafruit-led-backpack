@@ -26,9 +26,7 @@
 
 extern "C" void __cxa_pure_virtual() { while (1); }
 
-using adafruit::ledbackpack::Adafruit_8x8matrix;
-
-Adafruit_8x8matrix matrix = Adafruit_8x8matrix(0);
+using adafruit::ledbackpack::Adafruit_BicolorMatrix;
 
 static const uint8_t 
   smile_bmp[] =
@@ -61,73 +59,71 @@ static const uint8_t
 
 int main(void)
 {
-	Log_Debug("Starting 8x8 LED Matrix Test...\n");
-	
-	Adafruit_8x8matrix matrix(0);
+    Log_Debug("Starting 8x8 LED Matrix Test...\n");
+    
+    Adafruit_BicolorMatrix matrix(0);
 
-	const struct timespec sleep500 = {0, 500000000};
-	const struct timespec sleep100 = {0, 100000000};
-	matrix.begin(0x70);
+    const struct timespec sleep500 = {0, 500000000};
+    const struct timespec sleep100 = {0, 100000000};
+    matrix.begin(0x70);
 
-  while (true) {
-    matrix.clear();
-    matrix.drawBitmap(0, 0, smile_bmp, 8, 8, adafruit::ledbackpack::LED_ON);
+    while (true) {
+      matrix.clear();
+    matrix.drawBitmap(0, 0, smile_bmp, 8, 8, adafruit::ledbackpack::LED_GREEN);
     matrix.writeDisplay();
     nanosleep(&sleep500, nullptr);
 
     matrix.clear();
-    matrix.drawBitmap(0, 0, neutral_bmp, 8, 8, adafruit::ledbackpack::LED_ON);
+    matrix.drawBitmap(0, 0, neutral_bmp, 8, 8, adafruit::ledbackpack::LED_YELLOW);
     matrix.writeDisplay();
-    nanosleep(&sleep500, nullptr);
+    nanosleep(&sleep500, nullptr);;
 
     matrix.clear();
-    matrix.drawBitmap(0, 0, frown_bmp, 8, 8, adafruit::ledbackpack::LED_ON);
+    matrix.drawBitmap(0, 0, frown_bmp, 8, 8, adafruit::ledbackpack::LED_RED);
     matrix.writeDisplay();
-    nanosleep(&sleep500, nullptr);
+    nanosleep(&sleep500, nullptr);;
 
     matrix.clear();      // clear display
-    matrix.drawPixel(0, 0, adafruit::ledbackpack::LED_ON);  
+    matrix.drawPixel(0, 0, adafruit::ledbackpack::LED_GREEN);
     matrix.writeDisplay();  // write the changes we just made to the display
-    nanosleep(&sleep500, nullptr);
+    nanosleep(&sleep500, nullptr);;
 
     matrix.clear();
-    matrix.drawLine(0,0, 7,7, adafruit::ledbackpack::LED_ON);
+    matrix.drawLine(0,0, 7,7, adafruit::ledbackpack::LED_YELLOW);
     matrix.writeDisplay();  // write the changes we just made to the display
-    nanosleep(&sleep500, nullptr);
+    nanosleep(&sleep500, nullptr);;
 
     matrix.clear();
-    matrix.drawRect(0,0, 8,8, adafruit::ledbackpack::LED_ON);
-    matrix.fillRect(2,2, 4,4, adafruit::ledbackpack::LED_ON);
+    matrix.drawRect(0,0, 8,8, adafruit::ledbackpack::LED_RED);
+    matrix.fillRect(2,2, 4,4, adafruit::ledbackpack::LED_GREEN);
     matrix.writeDisplay();  // write the changes we just made to the display
-    nanosleep(&sleep500, nullptr);
+    nanosleep(&sleep500, nullptr);;
 
     matrix.clear();
-    matrix.drawCircle(3,3, 3, adafruit::ledbackpack::LED_ON);
+    matrix.drawCircle(3,3, 3, adafruit::ledbackpack::LED_YELLOW);
     matrix.writeDisplay();  // write the changes we just made to the display
-    nanosleep(&sleep500, nullptr);
+    nanosleep(&sleep500, nullptr);;
 
-    matrix.setTextSize(1);
     matrix.setTextWrap(false);  // we dont want text to wrap so it scrolls nicely
-    matrix.setTextColor(adafruit::ledbackpack::LED_ON);
-    for (int8_t x=0; x>=-36; x--) {
+    matrix.setTextSize(1);
+    matrix.setTextColor(adafruit::ledbackpack::LED_GREEN);
+    for (int8_t x=7; x>=-36; x--) {
       matrix.clear();
       matrix.setCursor(x,0);
       matrix.print("Hello");
       matrix.writeDisplay();
-      nanosleep(&sleep100, nullptr);
+      nanosleep(&sleep100, nullptr);;
     }
-
     matrix.setRotation(3);
+    matrix.setTextColor(adafruit::ledbackpack::LED_RED);
     for (int8_t x=7; x>=-36; x--) {
       matrix.clear();
       matrix.setCursor(x,0);
       matrix.print("World");
       matrix.writeDisplay();
-      nanosleep(&sleep100, nullptr);
+      nanosleep(&sleep100, nullptr);;
     }
     matrix.setRotation(0);
-
   }
-
     return 0;
 }
