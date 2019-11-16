@@ -23,6 +23,7 @@
 #include <applibs/i2c.h>
 #include "base.h"
 #include "Print.h"
+#include "Adafruit_GFX.h"
 
 namespace adafruit {
 namespace ledbackpack {
@@ -82,6 +83,47 @@ public:
 private:
 	uint8_t position;
 };
+
+class Adafruit_AlphaNum4 : public Adafruit_LEDBackpack {
+public:
+	Adafruit_AlphaNum4(I2C_InterfaceId interface);
+
+	void writeDigitRaw(uint8_t n, uint16_t bitmask);
+	void writeDigitAscii(uint8_t n, uint8_t ascii, bool dot = false);
+
+private:
+};
+
+class Adafruit_8x16matrix : public Adafruit_LEDBackpack, public Adafruit_GFX {
+public:
+	Adafruit_8x16matrix(I2C_InterfaceId interface);
+
+	void drawPixel(int16_t x, int16_t y, uint16_t color);
+
+private:
+};
+
+class Adafruit_8x8matrix : public Adafruit_LEDBackpack, public Adafruit_GFX {
+ public:
+  Adafruit_8x8matrix(I2C_InterfaceId interface);
+
+  void drawPixel(int16_t x, int16_t y, uint16_t color);
+
+ private:
+};
+
+
+
+class Adafruit_BicolorMatrix : public Adafruit_LEDBackpack, public Adafruit_GFX {
+public:
+	Adafruit_BicolorMatrix(I2C_InterfaceId interface);
+
+	void drawPixel(int16_t x, int16_t y, uint16_t color);
+
+private:
+};
+
+
 
 } // namespace ledbackpack
 } // namepsace adafruit
