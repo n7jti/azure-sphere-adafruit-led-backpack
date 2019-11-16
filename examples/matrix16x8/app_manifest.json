@@ -1,0 +1,11 @@
+{
+    "SchemaVersion": 1,
+    "Name": "Matrix16x8",
+    "ComponentId": "d7185778-cfe2-43a5-bf48-fce9e7eb39d2",
+    "EntryPoint": "/bin/app",
+    "CmdArgs": [],
+    "Capabilities": {
+        "I2cMaster": [ "ISU0" ]
+      },
+    "ApplicationType": "Default"
+  }

@@ -17,40 +17,30 @@
 
 extern "C" void __cxa_pure_virtual() { while (1); }
 
-using adafruit::ledbackpack::Adafruit_7segment;
+using adafruit::ledbackpack::Adafruit_AlphaNum4;
 
 int main(void)
 {
-    Log_Debug("Starting 7-Segment Blink application...\n");
+    Log_Debug("Starting AlphaNum4_blink Blink application...\n");
 	
-    Adafruit_7segment sevseg(0); 
+	Adafruit_AlphaNum4 alpha(0);
 
     const struct timespec sleepTime = {1, 0};
-	sevseg.begin(0x70);
+	alpha.begin(0x70);
 
     while (true) {
 		//print_long_Adafruit_7segment(&sevseg, 8888, 10);
-		sevseg.writeDigitNum(0, 8, true);
-		sevseg.writeDigitNum(1, 8, true);
-		sevseg.drawColon(true);
-		sevseg.writeDigitNum(3, 8, true);
-		sevseg.writeDigitNum(4, 8, true);
-		sevseg.writeDisplay(); 
+		alpha.writeDigitAscii(0, 'A');
+		alpha.writeDigitAscii(1, 'L');
+		alpha.writeDigitAscii(2, 'A');
+		alpha.writeDigitAscii(3, 'N');
+		alpha.writeDisplay();
 
-		nanosleep(&sleepTime, nullptr);
-
-		sevseg.clear();
-		sevseg.writeDisplay(); 
-
-		nanosleep(&sleepTime, nullptr);
-
-		sevseg.print(1234);
-		sevseg.writeDisplay();
 		
 		nanosleep(&sleepTime, nullptr);
 
-		sevseg.clear();
-		sevseg.writeDisplay();
+		alpha.clear();
+		alpha.writeDisplay();
 
 		nanosleep(&sleepTime, nullptr);
     }
