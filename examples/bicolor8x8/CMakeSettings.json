@@ -22,7 +22,7 @@
       "variables": [
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "${env.AzureSphereDefaultSDKDir}CMakeFiles\\AzureSphereToolchain.cmake"
+          "value": "${projectDir}\\Toolchain.cmake"
         },
         {
           "name": "AZURE_SPHERE_TARGET_API_SET",
@@ -45,7 +45,7 @@
       "variables": [
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "${env.AzureSphereDefaultSDKDir}CMakeFiles\\AzureSphereToolchain.cmake"
+          "value": "${projectDir}\\Toolchain.cmake"
         },
         {
           "name": "AZURE_SPHERE_TARGET_API_SET",

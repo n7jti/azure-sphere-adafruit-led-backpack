@@ -2,6 +2,7 @@
   "environments": [
     {
       "environment": "AzureSphere",
+
       "AzureSphereTargetApiSet": "3"
     }
   ],
@@ -10,7 +11,9 @@
       "name": "ARM-Debug",
       "generator": "Ninja",
       "configurationType": "Debug",
-      "inheritEnvironments": [ "AzureSphere" ],
+      "inheritEnvironments": [
+        "AzureSphere"
+      ],
       "buildRoot": "${projectDir}\\out\\${name}-${env.AzureSphereTargetApiSet}",
       "installRoot": "${projectDir}\\install\\${name}-${env.AzureSphereTargetApiSet}",
       "cmakeCommandArgs": "--no-warn-unused-cli",
@@ -19,13 +22,11 @@
       "variables": [
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "${env.AzureSphereDefaultSDKDir}CMakeFiles\\AzureSphereToolchain.cmake",
-          "type": "STRING"
+          "value": "${projectDir}\\Toolchain.cmake"
         },
         {
           "name": "AZURE_SPHERE_TARGET_API_SET",
-          "value": "${env.AzureSphereTargetApiSet}",
-          "type": "STRING"
+          "value": "${env.AzureSphereTargetApiSet}"
         }
       ]
     },
@@ -33,7 +34,9 @@
       "name": "ARM-Release",
       "generator": "Ninja",
       "configurationType": "Release",
-      "inheritEnvironments": [ "AzureSphere" ],
+      "inheritEnvironments": [
+        "AzureSphere"
+      ],
       "buildRoot": "${projectDir}\\out\\${name}-${env.AzureSphereTargetApiSet}",
       "installRoot": "${projectDir}\\install\\${name}-${env.AzureSphereTargetApiSet}",
       "cmakeCommandArgs": "--no-warn-unused-cli",
@@ -42,13 +45,11 @@
       "variables": [
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "${env.AzureSphereDefaultSDKDir}CMakeFiles\\AzureSphereToolchain.cmake",
-          "type": "STRING"
+          "value": "${projectDir}\\Toolchain.cmake"
         },
         {
           "name": "AZURE_SPHERE_TARGET_API_SET",
-          "value": "${env.AzureSphereTargetApiSet}",
-          "type": "STRING"
+          "value": "${env.AzureSphereTargetApiSet}"
         }
       ]
     }
