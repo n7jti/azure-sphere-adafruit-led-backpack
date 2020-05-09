@@ -19,7 +19,7 @@ ADD_EXECUTABLE(
 	../../Print.h
 )
 
-target_link_libraries(${PROJECT_NAME} applibs pthread gcc_s c)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} applibs pthread gcc_s c)
 
 azsphere_target_add_image_package(${PROJECT_NAME})
 
