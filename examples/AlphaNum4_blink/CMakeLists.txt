@@ -2,10 +2,10 @@
 #  Licensed under the MIT License.
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.11)
-PROJECT(AlphaNum4_blink CXX
+PROJECT(AlphaNum4_blink CXX)
 
 azsphere_configure_tools(TOOLS_REVISION "20.04")
-azsphere_configure_api(TARGET_API_SET "5"))
+azsphere_configure_api(TARGET_API_SET "5")
 
 # Create executable
 ADD_EXECUTABLE(
