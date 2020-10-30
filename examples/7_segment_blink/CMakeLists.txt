@@ -1,15 +1,17 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
+#  Copyright (c) Alan Ludwig. All rights reserved.
 #  Licensed under the MIT License.
 
-CMAKE_MINIMUM_REQUIRED(VERSION 3.11)
-PROJECT(7_Segment_Blink CXX)
 
-azsphere_configure_tools(TOOLS_REVISION "20.04")
-azsphere_configure_api(TARGET_API_SET "5")
+
+cmake_minimum_required(VERSION 3.11)
+project (7_segment_Blink CXX)
+
+azsphere_configure_tools(TOOLS_REVISION "20.07")
+azsphere_configure_api(TARGET_API_SET "6")
 
 # Create executable
 ADD_EXECUTABLE(
-	${PROJECT_NAME} 
+	${PROJECT_NAME}  
 	main.cpp
 	../../Adafruit_LEDBackpack.cpp
 	../../Adafruit_LEDBackpack.h
@@ -19,8 +21,9 @@ ADD_EXECUTABLE(
 	../../Print.h
 )
 
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} applibs pthread gcc_s c)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME}  applibs pthread gcc_s c)
 
 azsphere_target_add_image_package(${PROJECT_NAME})
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
+
